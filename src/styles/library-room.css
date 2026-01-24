@@ -1,0 +1,163 @@
+/* Library Room Styles */
+.library-room {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+    color: var(--color-text-main);
+}
+
+.library-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--color-dark-red);
+    padding-bottom: 20px;
+}
+
+.library-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.library-header p {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Save Section */
+.save-section {
+    background: rgba(10, 5, 5, 0.8);
+    border: 1px solid var(--color-border);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.current-state-preview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.save-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.grimoire-input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px;
+    font-family: var(--font-body);
+}
+
+.grimoire-input:focus {
+    outline: none;
+    border-color: var(--color-primary-red);
+}
+
+/* Bookshelf */
+.bookshelf {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.empty-shelf {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+    grid-column: 1 / -1;
+    padding: 40px;
+}
+
+.grimoire-book {
+    background: linear-gradient(to right, #1a0f0f, #251515);
+    border: 1px solid #3d2020;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.2s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.grimoire-book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+    border-color: var(--color-primary-red);
+}
+
+.book-spine {
+    width: 6px;
+    height: 100%;
+    border-left: 4px solid #555;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-info h3 {
+    margin: 0;
+    font-family: var(--font-display);
+    color: #e0d0d0;
+    font-size: 1.1rem;
+}
+
+.book-meta {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.library-btn {
+    padding: 5px 15px;
+    border: 1px solid #555;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.library-btn:hover {
+    color: white;
+    border-color: white;
+}
+
+.save-btn {
+    background: var(--color-dark-red);
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-family: var(--font-display);
+    letter-spacing: 1px;
+}
+
+.load-btn:hover {
+    background: rgba(0, 100, 0, 0.2);
+    border-color: #0f0;
+    color: #0f0;
+}
+
+.delete-btn:hover {
+    background: rgba(100, 0, 0, 0.2);
+    border-color: #f00;
+    color: #f00;
+}

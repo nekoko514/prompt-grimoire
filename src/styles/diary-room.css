@@ -1,0 +1,416 @@
+/* Diary Room - Dream Journal Styles */
+.diary-room {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Dream Particles */
+.dream-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.dream-particle {
+    position: absolute;
+    top: -20px;
+    font-size: 1.2rem;
+    color: rgba(255, 215, 0, 0.4);
+    animation: float-down linear infinite;
+    text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes float-down {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Header */
+.diary-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.diary-header h2 {
+    font-family: var(--font-display);
+    color: #e8d5b7;
+    font-size: 2.2rem;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.diary-header p {
+    color: #8a7a60;
+    font-style: italic;
+    margin: 10px 0 20px;
+}
+
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.toggle-btn {
+    background: rgba(20, 15, 10, 0.8);
+    border: 1px solid #3d3020;
+    color: #a09080;
+    padding: 10px 25px;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toggle-btn:hover {
+    border-color: #c0a060;
+    color: #e0d0b0;
+}
+
+.toggle-btn.active {
+    background: linear-gradient(135deg, #3d2a10, #2a1a08);
+    border-color: #c0a060;
+    color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* Write Section */
+.write-section {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Date Selector */
+.date-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.date-nav {
+    background: rgba(20, 15, 10, 0.8);
+    border: 1px solid #3d3020;
+    color: #c0a060;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.date-nav:hover {
+    background: #3d2a10;
+    border-color: #ffd700;
+}
+
+.date-input {
+    background: rgba(10, 8, 5, 0.9);
+    border: 1px solid #3d3020;
+    color: #e8d5b7;
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.date-input:focus {
+    outline: none;
+    border-color: #c0a060;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Mood Selector */
+.mood-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.mood-label {
+    color: #8a7a60;
+    font-family: var(--font-display);
+}
+
+.mood-options {
+    display: flex;
+    gap: 8px;
+}
+
+.mood-btn {
+    background: rgba(20, 15, 10, 0.8);
+    border: 2px solid transparent;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 50%;
+}
+
+.mood-btn:hover {
+    transform: scale(1.2);
+}
+
+.mood-btn.active {
+    transform: scale(1.1);
+}
+
+/* Journal Page */
+.journal-page {
+    position: relative;
+    background: linear-gradient(135deg, #1a1510 0%, #0f0a05 100%);
+    border: 2px solid #3d3020;
+    padding: 30px;
+    box-shadow:
+        inset 0 0 50px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.page-decoration {
+    position: absolute;
+    color: #3d3020;
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+.page-decoration.top-left {
+    top: 10px;
+    left: 15px;
+}
+
+.page-decoration.top-right {
+    top: 10px;
+    right: 15px;
+    transform: scaleX(-1);
+}
+
+.page-decoration.bottom-left {
+    bottom: 10px;
+    left: 15px;
+    transform: scaleY(-1);
+}
+
+.page-decoration.bottom-right {
+    bottom: 10px;
+    right: 15px;
+    transform: scale(-1);
+}
+
+.journal-textarea {
+    width: 100%;
+    min-height: 300px;
+    background: transparent;
+    border: none;
+    color: #c8b8a0;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    resize: vertical;
+}
+
+.journal-textarea::placeholder {
+    color: #5a5040;
+    font-style: italic;
+}
+
+.journal-textarea:focus {
+    outline: none;
+}
+
+/* Journal Actions */
+.journal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.char-count {
+    color: #5a5040;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #3d2a10, #2a1a08);
+    border: 1px solid #c0a060;
+    color: #ffd700;
+    padding: 12px 30px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.save-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #4d3a20, #3a2a18);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.save-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.save-btn.saving {
+    animation: pulse-gold 0.5s ease-in-out;
+}
+
+@keyframes pulse-gold {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+}
+
+/* Browse Section */
+.browse-section {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.empty-journal {
+    text-align: center;
+    padding: 60px 20px;
+    color: #5a5040;
+}
+
+.empty-journal p {
+    margin: 10px 0;
+}
+
+.empty-hint {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.entries-list {
+    display: grid;
+    gap: 15px;
+}
+
+.entry-card {
+    background: linear-gradient(135deg, #1a1510 0%, #0f0a05 100%);
+    border: 1px solid #3d3020;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.entry-card:hover {
+    border-color: #c0a060;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.entry-card.selected {
+    border-color: #ffd700;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.entry-mood {
+    font-size: 1.5rem;
+}
+
+.entry-date {
+    color: #c0a060;
+    font-family: var(--font-display);
+}
+
+.entry-preview {
+    color: #a09080;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.entry-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #2a2015;
+}
+
+.entry-time {
+    color: #5a5040;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+}
+
+.delete-entry-btn {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.delete-entry-btn:hover {
+    opacity: 1;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .diary-header h2 {
+        font-size: 1.8rem;
+    }
+
+    .mood-selector {
+        flex-direction: column;
+    }
+
+    .journal-textarea {
+        min-height: 250px;
+    }
+
+    .journal-page {
+        padding: 20px 15px;
+    }
+}

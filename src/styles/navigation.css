@@ -1,0 +1,72 @@
+/* Navigation Bar Styles */
+.mansion-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #050202;
+    border-top: 2px solid var(--color-dark-red);
+    display: flex;
+    justify-content: flex-start;
+    /* Changed from space-around for scrolling */
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.8);
+    overflow-x: auto;
+    /* Enable horizontal scroll */
+    -webkit-overflow-scrolling: touch;
+    /* Smooth scroll on iOS */
+}
+
+.mansion-nav::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar */
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-family: var(--font-display);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.8rem;
+    padding: 5px;
+    flex: 0 0 auto;
+    /* Don't shrink, auto width */
+    min-width: 80px;
+    /* Minimum width per item */
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    filter: grayscale(1);
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    color: var(--color-text-main);
+}
+
+.nav-btn:hover .nav-icon {
+    filter: grayscale(0) drop-shadow(0 0 5px var(--color-primary-red));
+}
+
+.nav-btn.active {
+    color: var(--color-primary-red);
+}
+
+.nav-btn.active .nav-icon {
+    filter: drop-shadow(0 0 8px var(--color-primary-red));
+    transform: scale(1.1);
+}
+
+/* Adjust Main Content to not be hidden behind nav */
+#root {
+    padding-bottom: 80px;
+    /* Space for nav */
+}

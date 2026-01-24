@@ -1,0 +1,424 @@
+/* Music Room Styles */
+.music-room {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+    color: var(--color-text-main);
+    text-align: center;
+}
+
+.music-header {
+    margin-bottom: 30px;
+}
+
+.music-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.music-header p {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Gramophone / Vinyl */
+.gramophone-container {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 40px;
+}
+
+.vinyl-record {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a1a1a 30%, #000 31%, #000 100%);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* texture */
+    background-image: repeating-radial-gradient(#111 0,
+            #111 2px,
+            #222 3px,
+            #222 4px);
+}
+
+.vinyl-label {
+    width: 80px;
+    height: 80px;
+    background: var(--color-dark-red);
+    border-radius: 50%;
+    border: 2px solid #f00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.vinyl-text {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: black;
+    font-weight: bold;
+}
+
+.spinning {
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Volume Control */
+.volume-control {
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.volume-control label {
+    font-family: var(--font-mono);
+    color: #888;
+}
+
+.volume-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: #333;
+    outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--color-primary-red);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(217, 28, 28, 0.5);
+}
+
+/* Record Shelf */
+.record-shelf {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 350px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 500px) {
+    .record-shelf {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 600px;
+    }
+}
+
+.record-jacket {
+    aspect-ratio: 1;
+    background: #222;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.record-jacket:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+    border-color: var(--color-primary-red);
+}
+
+.record-jacket.active {
+    border-color: var(--color-accent-neon);
+    box-shadow: 0 0 15px var(--color-accent-neon);
+}
+
+.jacket-sleeve {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg, rgba(50, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+}
+
+.jacket-title {
+    font-family: var(--font-display);
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.jacket-freq {
+    font-family: var(--font-mono);
+    color: var(--color-primary-red);
+    font-size: 0.8rem;
+}
+
+/* Delete button for custom tracks */
+.delete-track-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background: rgba(139, 0, 0, 0.9);
+    border: 1px solid #ff4444;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 0.7rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.record-jacket:hover .delete-track-btn {
+    opacity: 1;
+}
+
+.delete-track-btn:hover {
+    background: #ff4444;
+}
+
+.now-playing {
+    min-height: 30px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+/* Playback Controls */
+.playback-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.control-btn {
+    padding: 12px 24px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    border: 2px solid var(--color-primary-red);
+    background: transparent;
+    color: var(--color-primary-red);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.control-btn:hover:not(.disabled) {
+    background: var(--color-primary-red);
+    color: #000;
+    box-shadow: 0 0 15px rgba(217, 28, 28, 0.5);
+}
+
+.control-btn.play-btn {
+    border-color: var(--color-accent-neon);
+    color: var(--color-accent-neon);
+}
+
+.control-btn.play-btn:hover:not(.disabled) {
+    background: var(--color-accent-neon);
+    color: #000;
+    box-shadow: 0 0 15px var(--color-accent-neon);
+}
+
+.control-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Selected state for records */
+.record-jacket.selected {
+    border-color: var(--color-primary-red);
+    box-shadow: 0 0 10px rgba(217, 28, 28, 0.3);
+}
+
+.record-jacket.selected.active {
+    border-color: var(--color-accent-neon);
+    box-shadow: 0 0 15px var(--color-accent-neon);
+}
+
+.jacket-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+/* Import Panel */
+.room-controls {
+    margin-top: 10px;
+}
+
+.import-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--color-accent-secondary);
+    color: var(--color-accent-secondary);
+    padding: 8px 16px;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.import-toggle-btn:hover {
+    background: var(--color-accent-secondary);
+    color: var(--color-background);
+}
+
+.import-panel {
+    background: rgba(20, 10, 10, 0.95);
+    border: 1px solid var(--color-accent-primary);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+    text-align: left;
+}
+
+.import-panel h3 {
+    margin-top: 0;
+    color: var(--color-accent-primary);
+    font-family: var(--font-display);
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.import-row {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.import-row label {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.import-row input[type="text"] {
+    background: #222;
+    border: 1px solid #444;
+    padding: 8px;
+    color: #eee;
+    font-family: var(--font-body);
+}
+
+.import-row input[type="file"] {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.create-vinyl-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--color-accent-primary);
+    color: #fff;
+    border: none;
+    font-family: var(--font-display);
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.create-vinyl-btn:hover {
+    background: #c00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(170, 51, 51, 0.4);
+}
+
+/* Visualizer Particles */
+.visualizer-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.note {
+    position: absolute;
+    color: var(--color-accent-neon);
+    opacity: 0;
+    animation: floatNote 3s infinite linear;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+.n1 {
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.n2 {
+    left: 80%;
+    animation-delay: 1s;
+}
+
+.n3 {
+    left: 50%;
+    animation-delay: 2s;
+}
+
+@keyframes floatNote {
+    0% {
+        transform: translateY(100px) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

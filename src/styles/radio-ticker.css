@@ -1,0 +1,100 @@
+/* Radio Ticker Styles */
+.radio-ticker-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: #000;
+    border-bottom: 1px solid var(--color-primary-red);
+    display: flex;
+    align-items: center;
+    z-index: 2000;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.ticker-label {
+    background: var(--color-primary-red);
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 0 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    font-family: var(--font-display);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+}
+
+.ticker-track {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ticker-content {
+    white-space: nowrap;
+    position: absolute;
+    font-family: var(--font-mono);
+    color: var(--color-accent-neon);
+    font-size: 0.85rem;
+    animation: tickerScroll 80s linear infinite;
+    text-shadow: 0 0 2px var(--color-accent-neon);
+}
+
+@keyframes tickerScroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Adjust App padding so content isn't hidden by ticker */
+body {
+    padding-top: 30px;
+    /* Space for ticker */
+}
+
+/* Ticker Message Types */
+.ticker-separator {
+    color: #555;
+    margin: 0 8px;
+}
+
+.ticker-msg {
+    color: var(--color-accent-neon);
+}
+
+.ticker-news {
+    color: var(--color-accent-neon);
+}
+
+.ticker-tip {
+    color: #88dd88;
+}
+
+.ticker-quote {
+    color: #ddddaa;
+}
+
+.ticker-warning {
+    color: #ff6666;
+}
+
+.ticker-contract {
+    color: #ffaa44;
+}
+
+.ticker-calendar {
+    color: #66ccff;
+    font-weight: bold;
+}

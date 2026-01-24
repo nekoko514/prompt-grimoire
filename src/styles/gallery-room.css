@@ -1,0 +1,225 @@
+/* Gallery Room Styles */
+.gallery-room {
+    min-height: 100vh;
+    padding: 20px 20px 100px 20px;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.gallery-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    background: #333;
+    border: 1px solid #555;
+    padding: 10px 20px;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.upload-btn:hover {
+    background: var(--color-dark-red);
+    border-color: var(--color-primary-red);
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+}
+
+/* Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.empty-gallery {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #666;
+    font-family: var(--font-mono);
+    font-style: italic;
+    padding: 50px;
+}
+
+.gallery-frame {
+    position: relative;
+    border: 10px solid #2a2a2a;
+    /* Frame border */
+    border-image: repeating-linear-gradient(45deg, #333, #333 10px, #111 10px, #111 20px) 20;
+    cursor: pointer;
+    overflow: hidden;
+    height: 200px;
+    /* Fixed height for consistent grid */
+    transition: transform 0.2s;
+    background: #000;
+}
+
+.gallery-frame:hover {
+    transform: scale(1.03);
+    border-color: var(--color-primary-red);
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.gallery-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.burn-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid #f00;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.gallery-frame:hover .burn-btn {
+    opacity: 1;
+}
+
+.burn-btn:hover {
+    background: #f00;
+}
+
+/* Modal */
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    /* Above Ticker */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    touch-action: pan-y;
+    /* Allow vertical scroll but capture horizontal swipe */
+}
+
+.modal-content {
+    max-width: 80%;
+    max-height: 90%;
+    position: relative;
+    text-align: center;
+}
+
+.modal-content img {
+    max-width: 100%;
+    max-height: 70vh;
+    border: 2px solid var(--color-primary-red);
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.modal-caption {
+    color: #888;
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.image-counter {
+    color: var(--color-primary-red);
+    font-size: 0.9rem;
+}
+
+.close-modal {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: var(--font-display);
+}
+
+.close-modal:hover {
+    border-color: var(--color-primary-red);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #555;
+    color: #fff;
+    font-size: 3rem;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3001;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.nav-arrow:hover {
+    background: rgba(139, 0, 0, 0.8);
+    border-color: var(--color-primary-red);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+.nav-prev {
+    left: 10px;
+}
+
+.nav-next {
+    right: 10px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .nav-arrow {
+        width: 40px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .nav-prev {
+        left: 5px;
+    }
+
+    .nav-next {
+        right: 5px;
+    }
+
+    .modal-content {
+        max-width: 85%;
+    }
+
+    .modal-content img {
+        max-height: 60vh;
+    }
+}

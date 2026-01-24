@@ -1,0 +1,311 @@
+/* Prompt Vault Styles */
+.prompt-vault {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+.vault-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.vault-header h2 {
+    font-family: var(--font-display);
+    color: #9f7aea;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(159, 122, 234, 0.3);
+}
+
+.vault-header p {
+    color: #666;
+    font-style: italic;
+    margin: 10px 0 0;
+}
+
+/* Add Button */
+.add-prompt-btn {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #2d1f4e, #1a1030);
+    border: 1px dashed #9f7aea;
+    color: #b794f4;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-prompt-btn:hover {
+    background: linear-gradient(135deg, #3d2f5e, #2a2040);
+    border-style: solid;
+    box-shadow: 0 0 20px rgba(159, 122, 234, 0.3);
+}
+
+/* Add Form */
+.add-form {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    background: rgba(20, 15, 30, 0.9);
+    border: 1px solid #4a3877;
+    padding: 20px;
+}
+
+.prompt-title-input {
+    width: 100%;
+    background: #0a0510;
+    border: 1px solid #333;
+    color: #e0d0f0;
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.prompt-title-input:focus {
+    outline: none;
+    border-color: #9f7aea;
+}
+
+.prompt-content-input {
+    width: 100%;
+    background: #0a0510;
+    border: 1px solid #333;
+    color: #c0b0d0;
+    padding: 15px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 150px;
+}
+
+.prompt-content-input:focus {
+    outline: none;
+    border-color: #9f7aea;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-family: var(--font-display);
+}
+
+.cancel-btn:hover {
+    border-color: #888;
+    color: #aaa;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #553c9a, #44337a);
+    border: 1px solid #9f7aea;
+    color: #e9d8fd;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    transition: all 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #654caa, #54438a);
+    box-shadow: 0 0 15px rgba(159, 122, 234, 0.4);
+}
+
+.save-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-vault {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+}
+
+.empty-vault .hint {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Prompt List */
+.prompt-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+/* Prompt Card */
+.prompt-card {
+    background: linear-gradient(135deg, #1a1528 0%, #0f0a18 100%);
+    border: 1px solid #3d2f5e;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+.prompt-card:hover {
+    border-color: #9f7aea;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2040;
+}
+
+.card-title {
+    margin: 0;
+    color: #b794f4;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+}
+
+.card-date {
+    color: #555;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+}
+
+.card-content {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin-bottom: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.card-content pre {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #a090b0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-actions button {
+    padding: 8px 16px;
+    border: 1px solid #444;
+    background: transparent;
+    color: #888;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(72, 187, 120, 0.2);
+    border-color: #48bb78;
+    color: #48bb78;
+}
+
+.copy-btn.copied {
+    background: rgba(72, 187, 120, 0.3);
+    border-color: #48bb78;
+    color: #48bb78;
+}
+
+.edit-btn:hover {
+    background: rgba(159, 122, 234, 0.2);
+    border-color: #9f7aea;
+    color: #9f7aea;
+}
+
+.delete-btn:hover {
+    background: rgba(245, 101, 101, 0.2);
+    border-color: #f56565;
+    color: #f56565;
+}
+
+/* Edit Area */
+.edit-area {
+    margin-top: 10px;
+}
+
+.edit-textarea {
+    width: 100%;
+    background: #0a0510;
+    border: 1px solid #9f7aea;
+    color: #c0b0d0;
+    padding: 15px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.edit-textarea:focus {
+    outline: none;
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cancel-edit-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.save-edit-btn {
+    background: #553c9a;
+    border: 1px solid #9f7aea;
+    color: #e9d8fd;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.save-edit-btn:hover {
+    background: #654caa;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .vault-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .card-actions button {
+        width: 100%;
+    }
+}

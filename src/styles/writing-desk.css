@@ -1,0 +1,273 @@
+/* Writing Desk Styles */
+.writing-desk {
+    height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+    /* Nav bar space */
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1515;
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(20, 10, 10, 0.5), rgba(0, 0, 0, 0.8));
+}
+
+.desk-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #443;
+    padding-bottom: 10px;
+}
+
+.desk-header h2 {
+    font-family: var(--font-display);
+    color: #ccb;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.save-status {
+    color: #665;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.paper-container {
+    flex: 1;
+    background-color: #e8e4d9;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Paper Texture */
+.paper-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZThlNGQ5Ii8+CjxwYXRoIGQ9Ik0wIDBoNHYxSDB6IiBmaWxsPSIjNDQ0IiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+');
+    pointer-events: none;
+}
+
+.desk-textarea {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    font-family: 'Courier New', Courier, monospace;
+    /* Typewriter font */
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #222;
+    resize: none;
+    outline: none;
+    position: relative;
+    z-index: 20;
+}
+
+.desk-textarea::placeholder {
+    color: #998;
+    font-style: italic;
+}
+
+/* Desk Header Groups */
+.desk-title-group {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.desk-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.desk-btn {
+    background: transparent;
+    border: 1px solid #665;
+    color: #887;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.desk-btn:hover {
+    background: #443;
+    color: #ccb;
+    border-color: #ccb;
+}
+
+@media (max-width: 600px) {
+    .desk-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .desk-controls {
+        width: 100%;
+    }
+
+    .desk-btn {
+        flex: 1;
+    }
+}
+
+.desk-select {
+    background: transparent;
+    border: 1px solid #665;
+    color: #887;
+    padding: 5px;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    cursor: pointer;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.desk-select:hover {
+    border-color: #ccb;
+    color: #ccb;
+}
+
+.desk-select option {
+    background: #1a1515;
+    color: #ccb;
+}
+
+/* Backup Section Styles */
+.desk-footer.backup-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #443;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.backup-title {
+    font-family: var(--font-display);
+    color: #a33;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.backup-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.backup-btn {
+    border-color: #a33;
+    color: #a33;
+}
+
+.backup-btn:hover {
+    background: #a33;
+    color: #000;
+}
+
+.restore-btn {
+    border-color: #55a;
+    color: #66b;
+    cursor: pointer;
+}
+
+.restore-btn:hover {
+    background: #55a;
+    color: #000;
+}
+
+/* Delete Note Button */
+.delete-btn {
+    border-color: #c44;
+    color: #c44;
+}
+
+.delete-btn:hover {
+    background: #c44;
+    color: #000;
+}
+
+/* Confirmation Modal */
+.confirm-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.confirm-modal {
+    background: #1a1515;
+    border: 2px solid #c44;
+    padding: 30px;
+    text-align: center;
+    max-width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(200, 50, 50, 0.3);
+}
+
+.confirm-modal p {
+    margin: 0 0 10px 0;
+    color: #ddd;
+    font-size: 1.2rem;
+}
+
+.confirm-warning {
+    color: #888 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 25px !important;
+}
+
+.confirm-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.confirm-btn {
+    padding: 12px 24px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.confirm-btn.cancel {
+    background: transparent;
+    border-color: #666;
+    color: #888;
+}
+
+.confirm-btn.cancel:hover {
+    background: #444;
+    color: #fff;
+}
+
+.confirm-btn.delete {
+    background: #c44;
+    border-color: #c44;
+    color: #000;
+}
+
+.confirm-btn.delete:hover {
+    background: #f55;
+    border-color: #f55;
+}

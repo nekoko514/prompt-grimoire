@@ -1,0 +1,288 @@
+{
+  "categories": [
+    {
+      "id": "base",
+      "name": "Base Quality (品質基盤)",
+      "items": [
+        {
+          "id": "base-quality",
+          "label": "Base Quality",
+          "description": "基本呪文",
+          "value": "(masterpiece:1.5), (best quality:1.4), (ultra-detailed:1.4), (high resolution:1.3), (8k wallpaper), (sharp focus), (intricate details), (cinematic lighting), (depth of field), professional artwork, high aesthetic, beautifully lit,"
+        },
+        {
+          "id": "gothic-horror",
+          "label": "Gothic Horror",
+          "description": "ゴシック・ホラー",
+          "value": "(gothic atmosphere:1.4), (dark fantasy style), (moody lighting), (shadowy), (mysterious), (red and black color palette),"
+        },
+        {
+          "id": "dark-romance",
+          "label": "Dark Romance",
+          "description": "ロマンチック",
+          "value": "(romantic atmosphere:1.3), (intimate), (soft warm lighting), (rose petals floating), (sparkle core), (ethereal),"
+        }
+      ]
+    },
+    {
+      "id": "character",
+      "name": "Character Data (被写体)",
+      "items": [
+        {
+          "id": "alastor",
+          "label": "Alastor (Radio Demon)",
+          "description": "アラスター",
+          "value": "1boy, (Alastor_HazbinHotel:1.5), (red messy layered wolf cut hair:1.4), (fox ears:1.2), (deep expressive red eyes:1.5), (sharp teeth), (monocle), (red pinstripe suit), (black bowtie), (microphone staff in hand), (smiling maliciously:1.2),"
+        },
+        {
+          "id": "red-lady",
+          "label": "The Red Lady",
+          "description": "貴女自身",
+          "value": "1girl, (beautiful woman), (vibrant cherry red hair:1.5), (wavy long hair), (purple-pink eyes:1.2), (pale skin), (slender frame), (elegant red dress), (black gloves), (submissive pose),"
+        },
+        {
+          "id": "couple-actions",
+          "label": "Couple Actions",
+          "description": "2人のアクション",
+          "value": "2people, couple, (boy hugging girl from behind:1.4), (boy kissing girl's neck), (girl sitting on boy's lap), (eye contact), (romantic tension),"
+        }
+      ]
+    },
+    {
+      "id": "scenario",
+      "name": "Scenario & Background (舞台装置)",
+      "items": [
+        {
+          "id": "bedroom",
+          "label": "Bedroom: 蜜の巣所",
+          "description": "寝室",
+          "time": [
+            "night"
+          ],
+          "value": "indoors, (luxurious gothic bedroom), (king size bed with red velvet canopy), (dark room), (dim lighting), (candles), (rose petals on bed), (mirror in background),"
+        },
+        {
+          "id": "kitchen",
+          "label": "Kitchen: 甘美な調理場",
+          "description": "台所",
+          "time": [
+            "morning",
+            "day"
+          ],
+          "value": "indoors, (vintage 1930s kitchen), (cooking together), (apron), (flour on face), (holding spoon), (vegetables and meat on counter), (warm atmosphere),"
+        },
+        {
+          "id": "garden",
+          "label": "Garden: 薔薇と闇",
+          "description": "庭園",
+          "time": [
+            "night"
+          ],
+          "value": "outdoors, (night rose garden), (red roses blooming:1.4), (full moon), (iron fence), (gazebo), (fireflies), (mysterious mist),"
+        },
+        {
+          "id": "radio-tower",
+          "label": "Radio Tower: 放送室",
+          "description": "放送スタジオ",
+          "time": [
+            "day",
+            "night"
+          ],
+          "value": "indoors, (radio studio), (vintage microphones), (vacuum tubes), (recording equipment), (red ON AIR sign), (cluttered desk), (notes and vinyl records),"
+        },
+        {
+          "id": "speakeasy",
+          "label": "Speakeasy: 地下酒場",
+          "description": "バー",
+          "time": [
+            "night"
+          ],
+          "value": "indoors, (dimly lit bar), (jazz club atmosphere), (counter), (whiskey bottles), (cigarette smoke effect), (playing poker cards),"
+        }
+      ]
+    },
+    {
+      "id": "situation",
+      "name": "Situations (シチュエーション)",
+      "items": [
+        {
+          "id": "kitchen-mischief",
+          "label": "The Kitchen Mischief",
+          "description": "料理の邪魔",
+          "time": [
+            "morning",
+            "day"
+          ],
+          "value": "2people, couple, (Alastor cooking:1.3), (wearing apron), (holding kitchen knife), (cutting vegetables), (girl hugging boy from behind:1.4), (girl resting chin on boy's shoulder), (boy looking back at girl:1.2), (smiling with annoyance:1.1), (flirting), kitchen background, (warm lighting),"
+        },
+        {
+          "id": "midnight-waltz",
+          "label": "Midnight Waltz",
+          "description": "真夜中のワルツ",
+          "time": [
+            "night"
+          ],
+          "value": "2people, couple, (Alastor and woman dancing:1.4), (ballroom dancing), (Alastor holding woman's waist), (woman's hand on Alastor's shoulder), (intense eye contact:1.2), (smiling), (dynamic pose), (skirt twirling), (elegant atmosphere), (music notes effect),"
+        },
+        {
+          "id": "making-deal",
+          "label": "The Deal",
+          "description": "契約の瞬間",
+          "time": [
+            "day",
+            "night"
+          ],
+          "value": "2people, couple, (Alastor extending hand:1.4), (green aura emanating from hand:1.2), (symbolic handshake), (woman looking hesitant but fascinated:1.2), (glowing runes in air), (sinister smile), (deal with the devil trope),"
+        },
+        {
+          "id": "tea-time",
+          "label": "Tea Time",
+          "description": "優雅な茶会",
+          "time": [
+            "morning",
+            "day"
+          ],
+          "value": "2people, couple, (sitting at garden table), (drinking tea), (elegant tea set), (Alastor observing woman:1.2), (woman smiling shyly), (peaceful atmosphere), (sunlight filtering through trees), (conversation),"
+        }
+      ]
+    },
+    {
+      "id": "colors",
+      "name": "Color Palette (色彩)",
+      "items": [
+        {
+          "id": "color-crimson",
+          "label": "Crimson",
+          "description": "深紅",
+          "hex": "#8a0303",
+          "value": "(crimson red:1.3), (dark red theme)"
+        },
+        {
+          "id": "color-orange",
+          "label": "Hellfire",
+          "description": "業火",
+          "hex": "#ff4500",
+          "value": "(fiery orange:1.3), (magma glow), (warm lighting)"
+        },
+        {
+          "id": "color-gold",
+          "label": "Gold",
+          "description": "黄金",
+          "hex": "#c5a000",
+          "value": "(gold:1.3), (amber theme), (gilded details)"
+        },
+        {
+          "id": "color-emerald",
+          "label": "Emerald",
+          "description": "深緑",
+          "hex": "#005a32",
+          "value": "(emerald green:1.3), (dark green theme)"
+        },
+        {
+          "id": "color-teal",
+          "label": "Electric Teal",
+          "description": "青緑",
+          "hex": "#00ced1",
+          "value": "(electric teal:1.3), (cyan highlights)"
+        },
+        {
+          "id": "color-navy",
+          "label": "Midnight",
+          "description": "濃紺",
+          "hex": "#0a0a2a",
+          "value": "(midnight blue:1.3), (dark blue theme)"
+        },
+        {
+          "id": "color-purple",
+          "label": "Royal Purple",
+          "description": "紫",
+          "hex": "#4b0082",
+          "value": "(royal purple:1.3), (violet theme)"
+        },
+        {
+          "id": "color-pink",
+          "label": "Neon Pink",
+          "description": "ネオンピンク",
+          "hex": "#ff0099",
+          "value": "(neon pink:1.3), (pop style), (vibrant colors)"
+        },
+        {
+          "id": "color-pastel",
+          "label": "Pastel",
+          "description": "パステル",
+          "hex": "#ffb6c1",
+          "value": "(pastel colors:1.3), (soft lighting), (dreamy atmosphere)"
+        },
+        {
+          "id": "color-white",
+          "label": "Pure White",
+          "description": "純白",
+          "hex": "#ffffff",
+          "value": "(pure white:1.4), (angelic), (clinical), (clean background)"
+        },
+        {
+          "id": "color-sepia",
+          "label": "Vintage Sepia",
+          "description": "セピア",
+          "hex": "#704214",
+          "value": "(sepia tone:1.4), (vintage photo style), (brown theme)"
+        },
+        {
+          "id": "color-bw",
+          "label": "Monochrome",
+          "description": "白黒",
+          "hex": "#333333",
+          "value": "(monochrome:1.4), (silver details), (noir style)"
+        }
+      ]
+    },
+    {
+      "id": "outfits",
+      "name": "Wardrobe (衣装)",
+      "items": [
+        {
+          "id": "outfit-pinstripe",
+          "label": "Pinstripe Suit",
+          "description": "ストライプスーツ",
+          "value": "({color} pinstripe suit:1.5), (formal wear), (sharp tailored suit), (bowtie)"
+        },
+        {
+          "id": "outfit-gown",
+          "label": "Evening Gown",
+          "description": "イブニングドレス",
+          "value": "({color} vintage evening gown:1.5), (silk texture), (elegant), (long dress), (off-shoulder)"
+        },
+        {
+          "id": "outfit-vintage",
+          "label": "1930s Casual",
+          "description": "ヴィンテージ私服",
+          "value": "({color} 1930s fashion:1.4), (suspender pants), (dress shirt), (vintage vest), (period appropriate)"
+        },
+        {
+          "id": "outfit-gothic",
+          "label": "Gothic Lolita",
+          "description": "ゴスロリ",
+          "value": "({color} gothic lolita dress:1.5), (frills and lace), (ribbons), (bell shaped skirt), (bonnet)"
+        },
+        {
+          "id": "outfit-overcoat",
+          "label": "Winter Overcoat",
+          "description": "オーバーコート",
+          "value": "({color} heavy wool overcoat:1.4), (fur collar), (leather gloves), (winter fashion), (layered clothes)"
+        }
+      ]
+    },
+    {
+      "id": "negative",
+      "name": "Negative Prompts (除外呪文)",
+      "items": [
+        {
+          "id": "base-negative",
+          "label": "Base Negative",
+          "description": "基本ネガティブ",
+          "value": "(worst quality, low quality:1.4), (deformed, distorted, disfigured:1.3), (bad anatomy), (extra limbs), (missing limbs), (floating limbs), (mutated hands), (poorly drawn face), (ugly), (text, watermark, signature), (nsfw:0.5),"
+        }
+      ]
+    }
+  ]
+}

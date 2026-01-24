@@ -1,0 +1,205 @@
+/* Contract Room Styles */
+.contract-room {
+    min-height: 100vh;
+    padding: 20px 20px 100px 20px;
+    color: #2a2a2a;
+    /* Dark ink color */
+}
+
+.contract-header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+    /* Header stays light on dark bg */
+}
+
+.contract-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.soul-counter {
+    font-family: var(--font-mono);
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.soul-value {
+    color: var(--color-accent-neon);
+    font-size: 1.2rem;
+    text-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+/* Parchment Container */
+.parchment-container {
+    background: #d4c5a9;
+    /* Parchment beige */
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5), inset 0 0 100px rgba(139, 69, 19, 0.2);
+    font-family: serif;
+    position: relative;
+    /* Texture overlap */
+    background-image: repeating-linear-gradient(transparent,
+            transparent 20px,
+            rgba(0, 0, 0, 0.02) 20px,
+            rgba(0, 0, 0, 0.02) 21px);
+}
+
+.parchment-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid #8b4513;
+    margin: 10px;
+    pointer-events: none;
+}
+
+.contract-form {
+    margin-bottom: 40px;
+    border-bottom: 2px dashed #8b4513;
+    padding-bottom: 20px;
+}
+
+.contract-form h3,
+.contracts-list h3 {
+    font-family: var(--font-display);
+    color: #5a0000;
+    text-align: center;
+    margin-top: 0;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #5a0000;
+    font-family: var(--font-display);
+}
+
+.contract-input {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #5a0000;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.contract-input:focus {
+    outline: none;
+    background: rgba(90, 0, 0, 0.05);
+}
+
+.sign-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    background: #5a0000;
+    color: #e0d0d0;
+    border: none;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+}
+
+.sign-btn:hover {
+    background: #800000;
+    box-shadow: 0 5px 15px rgba(128, 0, 0, 0.3);
+}
+
+/* List */
+.contract-item {
+    border: 1px solid #a9957b;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.contract-item.fulfilled {
+    opacity: 0.6;
+    background: rgba(0, 100, 0, 0.05);
+}
+
+.contract-task {
+    display: block;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #222;
+}
+
+.contract-meta {
+    font-size: 0.9rem;
+    color: #665;
+    font-style: italic;
+}
+
+.contract-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.fulfill-btn,
+.breach-btn {
+    padding: 5px 15px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: bold;
+}
+
+.fulfill-btn {
+    background: #2e8b57;
+    color: white;
+}
+
+.breach-btn {
+    background: transparent;
+    color: #8b0000;
+    border: 1px solid #8b0000;
+}
+
+.breach-btn:hover {
+    background: #8b0000;
+    color: white;
+}
+
+.seal-stamp {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-15deg);
+    border: 3px double #2e8b57;
+    color: #2e8b57;
+    padding: 5px 10px;
+    font-family: var(--font-display);
+    font-weight: bold;
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.empty-msg {
+    text-align: center;
+    font-style: italic;
+    color: #776;
+}

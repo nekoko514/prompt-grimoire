@@ -1,0 +1,126 @@
+/* Mood Light Effect Styles */
+
+.mood-light-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Ambient glow effects at edges */
+.mood-glow {
+    position: absolute;
+    pointer-events: none;
+    transition: background 1.5s ease;
+}
+
+.mood-glow-left {
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 100%;
+}
+
+.mood-glow-right {
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+}
+
+.mood-glow-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+}
+
+/* Floating particles */
+.mood-particle {
+    position: absolute;
+    bottom: -20px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: float-up linear infinite;
+    filter: blur(1px);
+    transition: background-color 1s ease, box-shadow 1s ease;
+}
+
+@keyframes float-up {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--particle-opacity, 0.3);
+    }
+
+    50% {
+        transform: translateY(-50vh) translateX(20px) scale(1.2);
+    }
+
+    90% {
+        opacity: var(--particle-opacity, 0.3);
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(-15px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Central pulse effect */
+.mood-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulse-glow 4s ease-in-out infinite;
+    transition: background 1.5s ease;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+/* Performance: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .mood-particle {
+        animation: none;
+        opacity: 0.2;
+    }
+
+    .mood-pulse {
+        animation: none;
+    }
+}
+
+/* Mobile optimization: fewer particles */
+@media (max-width: 768px) {
+    .mood-particle:nth-child(n+10) {
+        display: none;
+    }
+
+    .mood-glow-left,
+    .mood-glow-right {
+        width: 20%;
+    }
+}
