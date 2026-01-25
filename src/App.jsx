@@ -15,6 +15,8 @@ import MusicRoom from './components/MusicRoom';
 import ContractRoom from './components/ContractRoom';
 import PromptVault from './components/PromptVault';
 import GalleryRoom from './components/GalleryRoom';
+import TerrariumRoom from './components/TerrariumRoom';
+import ConversationArchive from './components/ConversationArchive';
 import RadioTicker from './components/RadioTicker';
 import MoodLight from './components/MoodLight';
 
@@ -53,6 +55,10 @@ function App() {
         </div>
       )}
 
+      {currentRoom === 'archive' && (
+        <ConversationArchive />
+      )}
+
       {currentRoom === 'guest' && (
         <WritingDesk />
       )}
@@ -83,6 +89,10 @@ function App() {
 
       {currentRoom === 'game' && (
         <GameRoom setCurrentRoom={setCurrentRoom} />
+      )}
+
+      {currentRoom === 'terrarium' && (
+        <TerrariumRoom />
       )}
 
       <Navigation currentRoom={currentRoom} setRoom={setCurrentRoom} />

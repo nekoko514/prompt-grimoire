@@ -44,7 +44,7 @@
     font-family: var(--font-mono);
     color: var(--color-accent-neon);
     font-size: 0.85rem;
-    animation: tickerScroll 80s linear infinite;
+    animation: tickerScroll 150s linear infinite;
     text-shadow: 0 0 2px var(--color-accent-neon);
 }
 

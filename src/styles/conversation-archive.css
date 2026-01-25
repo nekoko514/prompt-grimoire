@@ -1,0 +1,545 @@
+/* Conversation Archive Styles */
+.conversation-archive {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+}
+
+.archive-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.archive-header h2 {
+    font-family: var(--font-display);
+    color: #63b3ed;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(99, 179, 237, 0.3);
+}
+
+.archive-header p {
+    color: #666;
+    font-style: italic;
+    margin: 10px 0 0;
+}
+
+/* Settings Toggle */
+.settings-toggle {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 15px;
+    padding: 12px 20px;
+    background: rgba(99, 179, 237, 0.1);
+    border: 1px solid #3182ce;
+    color: #63b3ed;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.settings-toggle:hover {
+    background: rgba(99, 179, 237, 0.2);
+}
+
+/* Settings Panel */
+.settings-panel {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    background: rgba(20, 30, 40, 0.9);
+    border: 1px solid #2c5282;
+    padding: 20px;
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.settings-row label {
+    color: #90cdf4;
+    min-width: 120px;
+    font-family: var(--font-display);
+}
+
+.settings-row input {
+    flex: 1;
+    background: #0a1520;
+    border: 1px solid #2c5282;
+    color: #e2e8f0;
+    padding: 10px 15px;
+    font-family: var(--font-body);
+}
+
+.settings-row input:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+
+.censor-char-input {
+    max-width: 80px !important;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.icon-input {
+    max-width: 60px !important;
+    text-align: center;
+    font-size: 1.3rem;
+    flex: none !important;
+}
+
+/* Avatar Settings */
+.avatar-settings-group {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+    border: 1px solid #1a365d;
+}
+
+.avatar-preview {
+    flex-shrink: 0;
+}
+
+.avatar-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.avatar-controls label {
+    color: #90cdf4;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+}
+
+.avatar-controls input[type="text"] {
+    background: #0a1520;
+    border: 1px solid #2c5282;
+    color: #e2e8f0;
+    padding: 8px 12px;
+    font-family: var(--font-body);
+}
+
+.avatar-controls input[type="text"]:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+
+.avatar-upload-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.upload-btn {
+    background: rgba(72, 187, 120, 0.2);
+    border: 1px solid #48bb78;
+    color: #48bb78;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.upload-btn:hover {
+    background: rgba(72, 187, 120, 0.3);
+}
+
+.clear-img-btn {
+    background: rgba(245, 101, 101, 0.2);
+    border: 1px solid #f56565;
+    color: #f56565;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.clear-img-btn:hover {
+    background: rgba(245, 101, 101, 0.4);
+}
+
+/* Avatar Display */
+.avatar-image {
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #3182ce;
+}
+
+.avatar-image.avatar-normal {
+    width: 60px;
+    height: 60px;
+}
+
+.avatar-image.avatar-small {
+    width: 28px;
+    height: 28px;
+}
+
+.avatar-emoji {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 179, 237, 0.1);
+    border: 2px solid #3182ce;
+    border-radius: 50%;
+}
+
+.avatar-emoji.avatar-normal {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+}
+
+.avatar-emoji.avatar-small {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+}
+
+/* Message Header with Avatar */
+.message-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.message-header .speaker {
+    margin-bottom: 0;
+}
+
+/* Censor Words Section */
+.censor-words-section {
+    border-top: 1px solid #2c5282;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.censor-words-section>label {
+    display: block;
+    color: #90cdf4;
+    margin-bottom: 10px;
+    font-family: var(--font-display);
+}
+
+.censor-words-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.censor-word-tag {
+    background: rgba(245, 101, 101, 0.2);
+    border: 1px solid #f56565;
+    color: #fc8181;
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.censor-word-tag:hover {
+    background: rgba(245, 101, 101, 0.4);
+}
+
+.add-censor-word {
+    display: flex;
+    gap: 5px;
+}
+
+.add-censor-word input {
+    width: 100px;
+    background: #0a1520;
+    border: 1px solid #2c5282;
+    color: #e2e8f0;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+}
+
+.add-censor-word input:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+
+.add-censor-word button {
+    background: #2c5282;
+    border: none;
+    color: #90cdf4;
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.add-censor-word button:hover {
+    background: #3182ce;
+}
+
+/* Add Entry Button */
+.add-entry-btn {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 20px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #1a365d, #0d1b2a);
+    border: 1px dashed #3182ce;
+    color: #63b3ed;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.add-entry-btn:hover {
+    background: linear-gradient(135deg, #2a4a7d, #1d2b3a);
+    border-style: solid;
+    box-shadow: 0 0 20px rgba(99, 179, 237, 0.3);
+}
+
+/* Add/Edit Form */
+.add-form,
+.edit-area {
+    max-width: 700px;
+    margin: 0 auto 20px;
+    background: rgba(13, 27, 42, 0.9);
+    border: 1px solid #2c5282;
+    padding: 20px;
+}
+
+.message-input-group {
+    margin-bottom: 15px;
+}
+
+.message-input-group label {
+    display: block;
+    color: #90cdf4;
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+}
+
+.message-input-group textarea {
+    width: 100%;
+    background: #0a1520;
+    border: 1px solid #2c5282;
+    color: #e2e8f0;
+    padding: 12px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+}
+
+.message-input-group textarea:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+
+.form-actions,
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cancel-btn {
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-family: var(--font-display);
+}
+
+.cancel-btn:hover {
+    border-color: #888;
+    color: #aaa;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #2c5282, #1a365d);
+    border: 1px solid #3182ce;
+    color: #bee3f8;
+    padding: 10px 30px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    transition: all 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3c6292, #2a4a7d);
+    box-shadow: 0 0 15px rgba(99, 179, 237, 0.4);
+}
+
+.save-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.empty-archive {
+    text-align: center;
+    padding: 60px 20px;
+    color: #555;
+}
+
+.empty-archive .hint {
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Entries List */
+.entries-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+/* Entry Card */
+.entry-card {
+    background: linear-gradient(135deg, #0d1b2a 0%, #0a1520 100%);
+    border: 1px solid #2c5282;
+    padding: 20px;
+    transition: all 0.2s;
+}
+
+.entry-card:hover {
+    border-color: #3182ce;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.entry-header {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1a365d;
+}
+
+.entry-date {
+    color: #4a5568;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
+
+/* Entry Content */
+.entry-content {
+    margin-bottom: 15px;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.message:last-child {
+    margin-bottom: 0;
+}
+
+.speaker {
+    display: block;
+    color: #90cdf4;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.message p {
+    margin: 0;
+    color: #cbd5e0;
+    font-family: var(--font-body);
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.user-message {
+    border-left: 3px solid #48bb78;
+}
+
+.persona-message {
+    border-left: 3px solid #ed64a6;
+}
+
+/* Entry Actions */
+.entry-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.entry-actions button {
+    padding: 8px 16px;
+    border: 1px solid #4a5568;
+    background: transparent;
+    color: #718096;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: rgba(72, 187, 120, 0.2);
+    border-color: #48bb78;
+    color: #48bb78;
+}
+
+.copy-btn.copied {
+    background: rgba(72, 187, 120, 0.3);
+    border-color: #48bb78;
+    color: #48bb78;
+}
+
+.edit-btn:hover {
+    background: rgba(99, 179, 237, 0.2);
+    border-color: #63b3ed;
+    color: #63b3ed;
+}
+
+.delete-btn:hover {
+    background: rgba(245, 101, 101, 0.2);
+    border-color: #f56565;
+    color: #f56565;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .archive-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .settings-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .settings-row label {
+        min-width: auto;
+    }
+
+    .settings-row input {
+        width: 100%;
+    }
+
+    .entry-actions {
+        flex-direction: column;
+    }
+
+    .entry-actions button {
+        width: 100%;
+    }
+}

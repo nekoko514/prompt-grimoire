@@ -9,6 +9,30 @@ const PromptVault = () => {
     const [copiedId, setCopiedId] = useState(null);
     const [editingId, setEditingId] = useState(null);
     const [editContent, setEditContent] = useState('');
+    const [expandedIds, setExpandedIds] = useState(new Set());
+    const [modalPrompt, setModalPrompt] = useState(null);
+
+    const toggleExpand = (id) => {
+        setExpandedIds(prev => {
+            const next = new Set(prev);
+            if (next.has(id)) {
+                next.delete(id);
+            } else {
+                next.add(id);
+            }
+            return next;
+        });
+    };
+
+    const openModal = (prompt) => {
+        setModalPrompt(prompt);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        setModalPrompt(null);
+        document.body.style.overflow = '';
+    };
 
     useEffect(() => {
         const saved = localStorage.getItem('persona_prompts');
@@ -277,11 +301,27 @@ const PromptVault = () => {
                             </div>
                         ) : (
                             <>
-                                <div className="card-content">
+                                <div
+                                    className={`card-content ${expandedIds.has(prompt.id) ? 'expanded' : ''}`}
+                                    onClick={() => toggleExpand(prompt.id)}
+                                >
                                     <pre>{prompt.content}</pre>
                                 </div>
 
+                                <button
+                                    className="expand-toggle"
+                                    onClick={() => toggleExpand(prompt.id)}
+                                >
+                                    {expandedIds.has(prompt.id) ? '▲ 折りたたむ' : '▼ もっと表示'}
+                                </button>
+
                                 <div className="card-actions">
+                                    <button
+                                        className="fullscreen-btn"
+                                        onClick={() => openModal(prompt)}
+                                    >
+                                        📖 全画面で読む
+                                    </button>
                                     <button
                                         className={`copy-btn ${copiedId === prompt.id ? 'copied' : ''}`}
                                         onClick={() => copyPrompt(prompt.id, prompt.content)}
@@ -306,6 +346,31 @@ const PromptVault = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Fullscreen Modal */}
+            {modalPrompt && (
+                <div className="vault-modal-overlay" onClick={closeModal}>
+                    <div className="vault-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="vault-modal-header">
+                            <h3>{modalPrompt.title}</h3>
+                            <button className="vault-modal-close" onClick={closeModal}>
+                                ✕ 閉じる
+                            </button>
+                        </div>
+                        <div className="vault-modal-content">
+                            <pre>{modalPrompt.content}</pre>
+                        </div>
+                        <div className="vault-modal-actions">
+                            <button
+                                className={`copy-btn ${copiedId === modalPrompt.id ? 'copied' : ''}`}
+                                onClick={() => copyPrompt(modalPrompt.id, modalPrompt.content)}
+                            >
+                                {copiedId === modalPrompt.id ? '✓ コピー完了!' : '📋 コピー'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

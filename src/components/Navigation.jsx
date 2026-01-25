@@ -5,6 +5,7 @@ const Navigation = ({ currentRoom, setRoom }) => {
     const rooms = [
         { id: 'studio', label: 'Broadcasting', icon: '🎙️' },
         { id: 'vault', label: 'The Vault', icon: '💾' },
+        { id: 'archive', label: 'Archive', icon: '📚' },
         { id: 'guest', label: 'Guest Room', icon: '📝' },
         { id: 'calendar', label: 'Schedule', icon: '📅' },
         { id: 'diary', label: 'Dream Journal', icon: '🌙' },
@@ -12,7 +13,8 @@ const Navigation = ({ currentRoom, setRoom }) => {
         { id: 'contracts', label: 'Contracts', icon: '📜' },
         { id: 'personas', label: 'Persona Vault', icon: '🎭' },
         { id: 'music', label: 'Phonograph', icon: '🎵' },
-        { id: 'game', label: 'Game Room', icon: '🎲' }
+        { id: 'game', label: 'Game Room', icon: '🎲' },
+        { id: 'terrarium', label: 'The Estate', icon: '🏠' }
     ];
 
     return (

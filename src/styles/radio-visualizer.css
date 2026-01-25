@@ -1,0 +1,169 @@
+/* Radio Visualizer - Vintage 1930s Style */
+
+.radio-visualizer {
+    margin: 20px auto;
+    max-width: 320px;
+}
+
+.visualizer-frame {
+    position: relative;
+    background: linear-gradient(135deg, #1a0a0a, #0a0505);
+    border: 3px solid #3a1515;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow:
+        0 0 20px rgba(139, 3, 3, 0.3),
+        inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Decorative corners */
+.frame-corner {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-color: #8a0303;
+    border-style: solid;
+}
+
+.frame-corner.top-left {
+    top: 5px;
+    left: 5px;
+    border-width: 2px 0 0 2px;
+}
+
+.frame-corner.top-right {
+    top: 5px;
+    right: 5px;
+    border-width: 2px 2px 0 0;
+}
+
+.frame-corner.bottom-left {
+    bottom: 5px;
+    left: 5px;
+    border-width: 0 0 2px 2px;
+}
+
+.frame-corner.bottom-right {
+    bottom: 5px;
+    right: 5px;
+    border-width: 0 2px 2px 0;
+}
+
+/* Header */
+.visualizer-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-display);
+}
+
+.radio-icon {
+    font-size: 1rem;
+    filter: grayscale(50%);
+}
+
+.broadcast-text {
+    color: #8a0303;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(139, 3, 3, 0.5);
+    animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+
+    52% {
+        opacity: 1;
+    }
+
+    54% {
+        opacity: 0.7;
+    }
+
+    56% {
+        opacity: 1;
+    }
+}
+
+/* Canvas container */
+.visualizer-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #2a1010;
+    border-radius: 4px;
+    background: #0a0505;
+}
+
+/* Footer */
+.visualizer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0 5px;
+}
+
+.freq-display {
+    font-family: var(--font-mono);
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.on-air-light {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    color: #444;
+    background: #1a0a0a;
+    transition: all 0.3s ease;
+}
+
+.on-air-light.active {
+    color: #ff0000;
+    background: #2a0a0a;
+    border-color: #ff0000;
+    box-shadow:
+        0 0 10px rgba(255, 0, 0, 0.5),
+        inset 0 0 10px rgba(255, 0, 0, 0.2);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 10px rgba(255, 0, 0, 0.5),
+            inset 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+
+    50% {
+        box-shadow:
+            0 0 20px rgba(255, 0, 0, 0.8),
+            inset 0 0 15px rgba(255, 0, 0, 0.4);
+    }
+}
+
+/* Vintage noise overlay */
+.visualizer-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.03"/></svg>');
+    pointer-events: none;
+    border-radius: 5px;
+}

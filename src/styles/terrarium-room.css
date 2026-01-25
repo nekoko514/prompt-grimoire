@@ -1,0 +1,183 @@
+/* Terrarium Room Styles */
+.terrarium-room {
+    min-height: 100vh;
+    padding: 20px;
+    padding-bottom: 100px;
+    background: linear-gradient(180deg, #0a0505 0%, #1a0a0a 100%);
+    text-align: center;
+}
+
+.terrarium-header {
+    margin-bottom: 15px;
+}
+
+.terrarium-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 10px rgba(217, 28, 28, 0.5);
+}
+
+.room-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.room-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    border: 1px solid #555;
+    transition: all 0.3s;
+}
+
+.room-dot.active {
+    background: var(--color-primary-red);
+    box-shadow: 0 0 10px var(--color-primary-red);
+}
+
+/* Stage Container */
+.terrarium-stage {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    border: 3px solid #3a1515;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.8),
+        inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.room-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Character */
+.character {
+    position: absolute;
+    bottom: 15%;
+    width: 100px;
+    height: auto;
+    transform: translateX(-50%);
+    transition: left 0.8s ease-out;
+    z-index: 10;
+}
+
+.character img {
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
+    /* Try to hide checkerboard by clipping to character shape */
+    clip-path: inset(5% 15% 0% 15%);
+    mix-blend-mode: multiply;
+}
+
+.character.facing-left img {
+    transform: scaleX(-1);
+}
+
+.character.walking {
+    animation: bounce 0.2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--color-primary-red);
+    color: var(--color-primary-red);
+    padding: 15px 10px;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 20;
+}
+
+.nav-arrow:hover {
+    background: var(--color-primary-red);
+    color: #fff;
+    box-shadow: 0 0 15px var(--color-primary-red);
+}
+
+.nav-arrow.left {
+    left: 0;
+    border-radius: 0 8px 8px 0;
+    border-left: none;
+}
+
+.nav-arrow.right {
+    right: 0;
+    border-radius: 8px 0 0 8px;
+    border-right: none;
+}
+
+/* Room Name Display */
+.room-name-display {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.room-name-jp {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-accent-neon);
+    text-shadow: 0 0 5px var(--color-accent-neon);
+}
+
+.room-name-en {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Hint Text */
+.terrarium-hint {
+    margin-top: 15px;
+    font-size: 0.75rem;
+    color: #555;
+    font-style: italic;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 500px) {
+    .terrarium-stage {
+        aspect-ratio: 4/5;
+    }
+
+    .character {
+        width: 60px;
+    }
+
+    .nav-arrow {
+        padding: 10px 8px;
+        font-size: 0.65rem;
+    }
+}

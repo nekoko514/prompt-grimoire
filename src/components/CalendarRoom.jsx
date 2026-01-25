@@ -78,10 +78,16 @@ const CalendarRoom = () => {
             days.push(
                 <div
                     key={day}
-                    className={`calendar-day ${isToday ? 'today' : ''}`}
+                    className={`calendar-day ${isToday ? 'today' : ''} ${hasEvent ? 'has-event' : ''}`}
                     onClick={() => handleDateClick(day)}
                 >
                     <span className="day-number">{day}</span>
+                    {hasEvent && (
+                        <div className="event-preview">
+                            {events[dateStr].split('\n')[0].substring(0, 20)}
+                            {events[dateStr].length > 20 ? '...' : ''}
+                        </div>
+                    )}
                     {hasEvent && <div className="event-dot"></div>}
                 </div>
             );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import audioEngine from '../utils/AudioEngine';
 import { getAllCustomTracks, saveCustomTrack, deleteCustomTrack, fileToBase64 } from '../utils/audioStorage';
+import RadioVisualizer from './RadioVisualizer';
 import '../styles/music-room.css';
 
 const MusicRoom = () => {
@@ -40,8 +41,6 @@ const MusicRoom = () => {
     const baseTracks = [
         { id: 'static', label: 'Radio Frequency', freq: '66.6 FM', icon: '📻' },
         { id: 'rain', label: 'Midnight Rain', freq: 'AM 1930', icon: '🌧️' },
-        { id: 'jazz', label: 'The Jazz Estate', freq: 'JAZZ-24', icon: '🎷' },
-        { id: 'humming', label: 'Alastor\'s Humming', freq: 'VOX-99', icon: '🎙️' },
         { id: 'screams', label: 'Distant Screams', freq: 'HELL-01', icon: '👻' },
         { id: 'void', label: 'The Void', freq: 'ERROR', icon: '🕳️' },
         { id: 'underwater', label: 'Deep Abyss', freq: '∿∿∿', icon: '🌊' }
@@ -238,6 +237,9 @@ const MusicRoom = () => {
                     </div>
                 )}
             </div>
+
+            {/* Radio Visualizer */}
+            <RadioVisualizer isPlaying={isPlaying} />
 
             <div className="now-playing">
                 {isPlaying && currentTrackInfo ? (

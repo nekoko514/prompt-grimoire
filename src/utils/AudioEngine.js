@@ -2,11 +2,13 @@ class AudioEngine {
     constructor() {
         this.ctx = null;
         this.masterGain = null;
+        this.analyser = null;
         this.nodes = {}; // Store active oscillator/buffer nodes
         this.isPlaying = false;
         this.currentTrack = null;
         this.audioElement = null;
         this.isInitialized = false;
+        this.mediaSource = null; // For audio element visualization
     }
 
     /**
@@ -16,8 +18,15 @@ class AudioEngine {
         if (!this.ctx) {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
             this.ctx = new AudioContext();
+
+            // Create analyser for visualization
+            this.analyser = this.ctx.createAnalyser();
+            this.analyser.fftSize = 64; // Small for performance, gives 32 bars
+            this.analyser.smoothingTimeConstant = 0.8;
+
             this.masterGain = this.ctx.createGain();
-            this.masterGain.connect(this.ctx.destination);
+            this.masterGain.connect(this.analyser);
+            this.analyser.connect(this.ctx.destination);
             this.masterGain.gain.value = 0.5;
         }
 
@@ -32,6 +41,24 @@ class AudioEngine {
         }
 
         this.isInitialized = true;
+    }
+
+    /**
+     * Get frequency data for visualization
+     * @returns {Uint8Array} Frequency data (0-255 values)
+     */
+    getFrequencyData() {
+        if (!this.analyser) return new Uint8Array(32);
+        const dataArray = new Uint8Array(this.analyser.frequencyBinCount);
+        this.analyser.getByteFrequencyData(dataArray);
+        return dataArray;
+    }
+
+    /**
+     * Get the analyser node for external visualization
+     */
+    getAnalyser() {
+        return this.analyser;
     }
 
     setVolume(value) {
@@ -74,18 +101,26 @@ class AudioEngine {
         // Handle custom tracks (Blob URLs or Base64)
         if (typeof trackId === 'string' && (trackId.startsWith('blob:') || trackId.startsWith('data:'))) {
             this.audioElement = new Audio(trackId);
+            this.audioElement.crossOrigin = 'anonymous';
             // Safety check for masterGain
             const volume = (this.masterGain && this.masterGain.gain) ? this.masterGain.gain.value : 0.5;
             this.audioElement.volume = volume;
             this.audioElement.loop = true;
 
             try {
+                // Connect audio element to analyser for visualization
+                if (!this.mediaSource) {
+                    this.mediaSource = this.ctx.createMediaElementSource(this.audioElement);
+                    this.mediaSource.connect(this.analyser);
+                }
+
                 await this.audioElement.play();
                 this.nodes[trackId] = {
                     stop: () => {
                         if (this.audioElement) {
                             this.audioElement.pause();
                             this.audioElement = null;
+                            this.mediaSource = null;
                         }
                     }
                 };
