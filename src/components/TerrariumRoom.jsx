@@ -6,17 +6,23 @@ import radioStudio from '../assets/terrarium/radio_studio.png';
 import bedroom from '../assets/terrarium/bedroom.png';
 import kitchen from '../assets/terrarium/kitchen.png';
 import garden from '../assets/terrarium/garden.png';
+import library from '../assets/terrarium/library.png';
+import living from '../assets/terrarium/living.png';
+import bathroom from '../assets/terrarium/bathroom.png';
 import alastorSprite from '../assets/terrarium/alastor.png';
 
 const ROOMS = [
-    { id: 'garden', name: '薔薇園', nameEn: 'Rose Garden', image: garden },
+    { id: 'bedroom', name: '寝室', nameEn: 'Bedroom', image: bedroom },
+    { id: 'bathroom', name: '浴室', nameEn: 'Bathroom', image: bathroom },
+    { id: 'living', name: '居間', nameEn: 'Living Room', image: living },
+    { id: 'library', name: '書斎', nameEn: 'The Study', image: library },
     { id: 'kitchen', name: '調理場', nameEn: 'Kitchen', image: kitchen },
     { id: 'radio', name: '放送室', nameEn: 'Radio Studio', image: radioStudio },
-    { id: 'bedroom', name: '寝室', nameEn: 'Bedroom', image: bedroom },
+    { id: 'garden', name: '薔薇園', nameEn: 'Rose Garden', image: garden },
 ];
 
 const TerrariumRoom = () => {
-    const [currentRoomIndex, setCurrentRoomIndex] = useState(2); // Start at radio studio
+    const [currentRoomIndex, setCurrentRoomIndex] = useState(5); // Start at radio studio
     const [characterX, setCharacterX] = useState(50); // percentage
     const [isWalking, setIsWalking] = useState(false);
     const [facingLeft, setFacingLeft] = useState(false);
@@ -83,14 +89,13 @@ const TerrariumRoom = () => {
                     className="room-background"
                 />
 
-                {/* Character - temporarily hidden until sprite is fixed
+                {/* Character */}
                 <div
                     className={`character ${isWalking ? 'walking' : ''} ${facingLeft ? 'facing-left' : ''}`}
                     style={{ left: `${characterX}%` }}
                 >
                     <img src={alastorSprite} alt="Alastor" />
                 </div>
-                */}
 
                 {/* Room Navigation Arrows */}
                 {currentRoomIndex > 0 && (

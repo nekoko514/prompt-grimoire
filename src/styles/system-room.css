@@ -1,0 +1,129 @@
+/* System Room Styles */
+.system-room {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    height: 80vh;
+    background-color: #0d0808;
+    border: 4px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-image: repeating-linear-gradient(45deg, #0d0808 0, #0d0808 10px, #140c0c 10px, #140c0c 20px);
+}
+
+.system-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--color-dark-red);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.system-header h2 {
+    font-family: var(--font-display);
+    color: var(--color-primary-red);
+    margin: 0;
+    text-shadow: 0 0 5px var(--color-dark-red);
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--color-primary-red);
+}
+
+.system-content {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.system-section {
+    background: linear-gradient(180deg, #1a1010, #0d0808);
+    border: 2px solid #a33;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.system-section h3 {
+    color: #ffaa44;
+    margin: 0 0 10px 0;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    border-bottom: 1px solid #a33;
+    padding-bottom: 8px;
+}
+
+.section-desc {
+    color: #999;
+    font-size: 0.9rem;
+    margin: 0 0 20px 0;
+    line-height: 1.5;
+}
+
+.system-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.action-btn {
+    padding: 15px;
+    border-radius: 6px;
+    font-family: var(--font-display);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.action-btn.backup {
+    background: #a33;
+    border: 2px solid #c44;
+    color: #fff;
+}
+
+.action-btn.backup:hover {
+    background: #c55;
+    box-shadow: 0 0 20px rgba(200, 50, 50, 0.4);
+}
+
+.action-btn.restore {
+    background: #336;
+    border: 2px solid #558;
+    color: #aaf;
+    cursor: pointer;
+}
+
+.action-btn.restore:hover {
+    background: #448;
+    box-shadow: 0 0 20px rgba(50, 100, 200, 0.4);
+}
+
+.restore-label {
+    display: block;
+    width: 100%;
+}

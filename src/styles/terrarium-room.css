@@ -66,7 +66,8 @@
 .character {
     position: absolute;
     bottom: 15%;
-    width: 100px;
+    width: 180px;
+    /* Increased from 100px */
     height: auto;
     transform: translateX(-50%);
     transition: left 0.8s ease-out;
@@ -78,9 +79,6 @@
     height: auto;
     image-rendering: pixelated;
     filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.8));
-    /* Try to hide checkerboard by clipping to character shape */
-    clip-path: inset(5% 15% 0% 15%);
-    mix-blend-mode: multiply;
 }
 
 .character.facing-left img {
@@ -173,7 +171,8 @@
     }
 
     .character {
-        width: 60px;
+        width: 100px;
+        /* Increased from 60px */
     }
 
     .nav-arrow {

@@ -299,31 +299,31 @@ class AudioEngine {
         const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
         const output = buffer.getChannelData(0);
 
-        // Brown noise for underwater rumble - louder
+        // Brown noise for underwater rumble - softer to avoid vacuum effect
         let lastOut = 0.0;
         for (let i = 0; i < bufferSize; i++) {
             const white = Math.random() * 2 - 1;
             output[i] = (lastOut + (0.02 * white)) / 1.02;
             lastOut = output[i];
-            output[i] *= 2.0; // Increased volume
+            output[i] *= 1.2; // Reduced from 2.0 to be more subtle
         }
 
         const noise = this.ctx.createBufferSource();
         noise.buffer = buffer;
         noise.loop = true;
 
-        // Low-pass filter for muffled effect
+        // Low-pass filter for deep muffled effect
         const lpFilter = this.ctx.createBiquadFilter();
         lpFilter.type = 'lowpass';
-        lpFilter.frequency.value = 300; // Slightly higher for more presence
-        lpFilter.Q.value = 0.7;
+        lpFilter.frequency.value = 180; // Lowered from 300 to remove "air" sound
+        lpFilter.Q.value = 0.5;
 
         // Slow LFO for wavering
         const lfo = this.ctx.createOscillator();
         const lfoGain = this.ctx.createGain();
         lfo.type = 'sine';
         lfo.frequency.value = 0.08;
-        lfoGain.gain.value = 80;
+        lfoGain.gain.value = 50; // Reduced modulation depth
         lfo.connect(lfoGain);
         lfoGain.connect(lpFilter.frequency);
         lfo.start();
@@ -333,7 +333,7 @@ class AudioEngine {
         const droneGain = this.ctx.createGain();
         drone.type = 'sine';
         drone.frequency.value = 80; // Higher for mobile audibility
-        droneGain.gain.value = 0.25;
+        droneGain.gain.value = 0.3; // Slight boost to drone
         drone.connect(droneGain);
         droneGain.connect(this.masterGain);
         drone.start();

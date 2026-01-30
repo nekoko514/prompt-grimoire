@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BackupManager } from '../utils/BackupManager';
+
 import '../styles/archives.css';
 
 const RadioArchives = ({ onClose }) => {
@@ -104,44 +104,12 @@ const RadioArchives = ({ onClose }) => {
         document.body.removeChild(element);
     };
 
-    // System Backup Functions
-    const handleSystemBackup = () => {
-        BackupManager.downloadBackup();
-    };
 
-    const handleSystemRestore = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        if (!window.confirm("⚠️ 警告: バックアップを復元すると、現在のデータ（メモ、契約、カレンダーなど）がすべて上書きされます。\n\n本当に復元しますか？")) {
-            e.target.value = '';
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            try {
-                const json = JSON.parse(event.target.result);
-                if (BackupManager.restoreBackup(json)) {
-                    alert("✅ 復元完了！ページをリロードします。");
-                    window.location.reload();
-                } else {
-                    alert("❌ 復元に失敗しました。ファイルが無効です。");
-                }
-            } catch (err) {
-                console.error(err);
-                alert("❌ バックアップファイルの読み込みエラー");
-            }
-        };
-        reader.readAsText(file);
-        e.target.value = '';
-    };
 
     return (
         <div className="archives-container">
             <div className="archives-header">
                 <h2>THE VAULT</h2>
-                <button className="close-btn" onClick={onClose}>×</button>
             </div>
 
             {/* Confirmation Modal */}
@@ -165,25 +133,7 @@ const RadioArchives = ({ onClose }) => {
                 </>
             )}
 
-            {/* System Backup Section */}
-            <div className="system-backup-section">
-                <h3>📦 System Archives</h3>
-                <p className="backup-desc">アプリ更新前にデータをバックアップしてください</p>
-                <div className="backup-controls">
-                    <button className="backup-btn system" onClick={handleSystemBackup}>
-                        💾 BACKUP ALL DATA
-                    </button>
-                    <label className="restore-btn system">
-                        ♻️ RESTORE DATA
-                        <input
-                            type="file"
-                            style={{ display: 'none' }}
-                            accept=".json"
-                            onChange={handleSystemRestore}
-                        />
-                    </label>
-                </div>
-            </div>
+
 
             <div className="archives-divider"></div>
 

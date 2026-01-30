@@ -23,7 +23,25 @@
 .archive-header p {
     color: #666;
     font-style: italic;
-    margin: 10px 0 0;
+    margin: 10px 0 20px;
+}
+
+.export-btn {
+    background: linear-gradient(135deg, #2c5282, #1a365d);
+    border: 1px solid #3182ce;
+    color: #bee3f8;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: var(--font-display);
+    border-radius: 4px;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.export-btn:hover {
+    background: linear-gradient(135deg, #3c6292, #2a4a7d);
+    box-shadow: 0 0 15px rgba(99, 179, 237, 0.4);
+    transform: translateY(-1px);
 }
 
 /* Settings Toggle */
@@ -542,4 +560,93 @@
     .entry-actions button {
         width: 100%;
     }
+}
+
+/* Full Screen Modal */
+.archive-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.archive-modal {
+    background: linear-gradient(135deg, #0d1b2a 0%, #0a1520 100%);
+    border: 1px solid #3182ce;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 50px rgba(99, 179, 237, 0.3);
+}
+
+.archive-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #1a365d;
+}
+
+.archive-modal-header h3 {
+    margin: 0;
+    color: #63b3ed;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+}
+
+.archive-modal-close {
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.archive-modal-close:hover {
+    border-color: #f56565;
+    color: #f56565;
+}
+
+.archive-modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-message {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.modal-message p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-top: 10px;
+}
+
+.archive-modal-actions {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    border-top: 1px solid #1a365d;
+    justify-content: flex-end;
+}
+
+.fullscreen-btn:hover {
+    background: rgba(99, 179, 237, 0.2);
+    border-color: #63b3ed;
+    color: #63b3ed;
 }

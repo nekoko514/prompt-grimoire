@@ -3,6 +3,7 @@ import '../styles/navigation.css';
 
 const Navigation = ({ currentRoom, setRoom }) => {
     const rooms = [
+        { id: 'transmitter', label: 'Transmitter', icon: '📻' },
         { id: 'studio', label: 'Broadcasting', icon: '🎙️' },
         { id: 'vault', label: 'The Vault', icon: '💾' },
         { id: 'archive', label: 'Archive', icon: '📚' },
@@ -14,7 +15,9 @@ const Navigation = ({ currentRoom, setRoom }) => {
         { id: 'personas', label: 'Persona Vault', icon: '🎭' },
         { id: 'music', label: 'Phonograph', icon: '🎵' },
         { id: 'game', label: 'Game Room', icon: '🎲' },
-        { id: 'terrarium', label: 'The Estate', icon: '🏠' }
+        { id: 'terrarium', label: 'The Estate', icon: '🏠' },
+        { id: 'darkroom', label: 'Darkroom', icon: '🧪' },
+        { id: 'system', label: 'System', icon: '⚙️' }
     ];
 
     return (

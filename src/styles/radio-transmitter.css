@@ -1,0 +1,602 @@
+.radio-transmitter {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #1a0b0b;
+    color: #ff3333;
+    font-family: 'Courier New', monospace;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.transmitter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #550000;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.transmitter-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ff0000;
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #880000;
+}
+
+.session-menu-btn {
+    background: #220000;
+    border: 1px solid #550000;
+    color: #ffaaaa;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+
+.session-menu-btn:hover {
+    background: #440000;
+    border-color: #880000;
+}
+
+.new-session-btn {
+    background: #003300;
+    border: 1px solid #005500;
+    color: #88ff88;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.new-session-btn:hover {
+    background: #005500;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.brain-vault-btn {
+    background: #330033;
+    border: 1px solid #550055;
+    color: #ff88ff;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.brain-vault-btn:hover {
+    background: #550055;
+    box-shadow: 0 0 10px #ff00ff;
+}
+
+.status-light {
+    font-size: 0.8rem;
+    background: #ff0000;
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    animation: flash 2s infinite;
+}
+
+@keyframes flash {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Session Menu */
+.session-menu {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background: #1a0505;
+    border: 2px solid #550000;
+    z-index: 100;
+    max-height: 300px;
+    width: 320px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
+
+.session-menu-header {
+    background: #330000;
+    padding: 8px 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #550000;
+}
+
+.session-list {
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.session-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #330000;
+    transition: background 0.2s;
+}
+
+.session-item:hover {
+    background: #330000;
+}
+
+.session-item.active {
+    background: #550000;
+    border-left: 3px solid #ff0000;
+}
+
+.session-item.archived {
+    opacity: 0.6;
+}
+
+.session-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.session-date {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    margin-right: 10px;
+}
+
+.session-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.session-actions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.session-actions button:hover {
+    opacity: 1;
+}
+
+.archive-btn:hover {
+    color: #ffcc00;
+}
+
+.delete-btn:hover {
+    color: #ff4444;
+}
+
+/* Log Display */
+.log-display {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #550000;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+}
+
+.log-entry {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-left: 2px solid transparent;
+}
+
+.log-entry.user {
+    border-left-color: #444;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.log-entry.assistant {
+    border-left-color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.entry-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.edit-btn,
+.regenerate-btn {
+    background: transparent;
+    border: 1px solid #550000;
+    color: #888;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    background: #333300;
+    color: #ffcc00;
+    border-color: #666600;
+}
+
+.regenerate-btn:hover {
+    background: #003333;
+    color: #00cccc;
+    border-color: #006666;
+}
+
+.entry-content {
+    font-size: 1rem;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* Edit Area */
+.edit-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-input {
+    background: #000;
+    border: 1px solid #666600;
+    color: #ffcc88;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    min-height: 80px;
+    resize: vertical;
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-buttons button {
+    background: #333300;
+    border: 1px solid #666600;
+    color: #ffcc88;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.edit-buttons button:first-child {
+    background: #005500;
+    border-color: #008800;
+    color: #88ff88;
+}
+
+.edit-buttons button:first-child:hover {
+    background: #008800;
+}
+
+.edit-buttons button:last-child:hover {
+    background: #550000;
+    border-color: #880000;
+    color: #ff8888;
+}
+
+.empty-log {
+    text-align: center;
+    opacity: 0.5;
+    padding: 40px;
+}
+
+/* Control Panel */
+.control-panel {
+    display: flex;
+    gap: 10px;
+    min-height: 50px;
+}
+
+.morse-input {
+    flex: 1;
+    background: #000;
+    border: 1px solid #550000;
+    color: #ffcccc;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+}
+
+.morse-input:focus {
+    border-color: #ff0000;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+.morse-input:disabled {
+    background: #111;
+    color: #444;
+}
+
+.transmit-btn {
+    background: #550000;
+    color: #ffaaaa;
+    border: 2px solid #880000;
+    padding: 0 20px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.transmit-btn:hover:not(.disabled) {
+    background: #aa0000;
+    color: #fff;
+    box-shadow: 0 0 15px #ff0000;
+}
+
+.transmit-btn.disabled {
+    background: #220000;
+    color: #444;
+    border-color: #330000;
+    cursor: not-allowed;
+}
+
+.tuning-text {
+    font-style: italic;
+    opacity: 0.7;
+    animation: flicker 0.1s infinite;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .radio-transmitter {
+        padding: 10px;
+    }
+
+    .transmitter-header h2 {
+        font-size: 1rem;
+    }
+
+    .session-menu {
+        left: 10px;
+        right: 10px;
+        width: auto;
+    }
+
+    .session-menu-btn {
+        max-width: 120px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Theme Customization */
+.radio-transmitter {
+    --theme-text-color: #ffcccc;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.radio-transmitter>*:not(.bg-overlay) {
+    position: relative;
+    z-index: 1;
+}
+
+.message-text {
+    color: var(--theme-text-color);
+}
+
+.settings-btn {
+    background: #1a1a33;
+    border: 1px solid #333366;
+    color: #aaaaff;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.settings-btn:hover {
+    background: #2a2a44;
+    box-shadow: 0 0 10px #6666ff;
+}
+
+.settings-panel {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: rgba(20, 10, 30, 0.95);
+    border: 2px solid #553355;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 100;
+    min-width: 280px;
+    box-shadow: 0 5px 20px rgba(100, 50, 100, 0.4);
+}
+
+.settings-panel h3 {
+    margin: 0 0 15px 0;
+    color: #ffaaff;
+    font-size: 1rem;
+    border-bottom: 1px solid #442244;
+    padding-bottom: 10px;
+}
+
+.setting-row {
+    margin-bottom: 15px;
+}
+
+.setting-row label {
+    display: block;
+    color: #cc99cc;
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.setting-row input[type="color"] {
+    width: 40px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.setting-row input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    background: #1a0a1a;
+    border: 1px solid #442244;
+    color: #ffccff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+.setting-row input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+.reset-theme-btn {
+    width: 100%;
+    padding: 8px;
+    background: #331133;
+    border: 1px solid #553355;
+    color: #ffaaff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.reset-theme-btn:hover {
+    background: #442244;
+}
+
+.bg-image-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.bg-image-options input[type="file"] {
+    font-size: 0.8rem;
+    color: #cc99cc;
+}
+
+.bg-image-options .or-text {
+    color: #886688;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.clear-bg-btn {
+    padding: 5px 10px;
+    background: #441122;
+    border: 1px solid #662233;
+    color: #ff8899;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    transition: all 0.2s;
+}
+
+.clear-bg-btn:hover {
+    background: #662233;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #332233;
+}
+
+.settings-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.settings-section h4 {
+    margin: 0 0 12px 0;
+    color: #aa88aa;
+    font-size: 0.9rem;
+}
+
+.setting-row input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    background: #1a0a1a;
+    border: 1px solid #442244;
+    color: #ffccff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.api-status {
+    font-size: 0.8rem;
+    color: #ff8866;
+}
+
+.api-status.active {
+    color: #66ff88;
+}

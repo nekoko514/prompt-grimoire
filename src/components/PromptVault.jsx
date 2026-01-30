@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import '../styles/prompt-vault.css';
 
 const PromptVault = () => {
@@ -347,8 +348,8 @@ const PromptVault = () => {
                 ))}
             </div>
 
-            {/* Fullscreen Modal */}
-            {modalPrompt && (
+            {/* Fullscreen Modal - Using Portal to ensure it's on top of everything */}
+            {modalPrompt && ReactDOM.createPortal(
                 <div className="vault-modal-overlay" onClick={closeModal}>
                     <div className="vault-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="vault-modal-header">
@@ -369,7 +370,8 @@ const PromptVault = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.body
             )}
         </div>
     );

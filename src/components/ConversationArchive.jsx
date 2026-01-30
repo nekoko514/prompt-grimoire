@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import '../styles/conversation-archive.css';
 
 const ConversationArchive = () => {
@@ -22,6 +23,17 @@ const ConversationArchive = () => {
     const [editPersonaMessage, setEditPersonaMessage] = useState('');
     const [showSettings, setShowSettings] = useState(false);
     const [copiedId, setCopiedId] = useState(null);
+    const [modalEntry, setModalEntry] = useState(null);
+
+    const openModal = (entry) => {
+        setModalEntry(entry);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = () => {
+        setModalEntry(null);
+        document.body.style.overflow = '';
+    };
 
     // Load data from localStorage
     useEffect(() => {
@@ -183,11 +195,105 @@ const ConversationArchive = () => {
         }
     };
 
+    // Export to HTML
+    const exportToHtml = () => {
+        if (entries.length === 0) return;
+
+        const date = new Date().toLocaleDateString('ja-JP').replace(/\//g, '-');
+        const filename = `Grimoire_Log_${date}.html`;
+
+        const htmlContent = `
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Archive - ${date}</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            color: #e2e8f0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #2c5282;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 { color: #63b3ed; margin: 0; }
+        .entry {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid #2c5282;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .date { color: #4a5568; font-size: 0.85rem; margin-bottom: 15px; display: block; }
+        .message { margin-bottom: 15px; padding: 10px; border-left: 3px solid #555; }
+        .user-message { border-color: #48bb78; background: rgba(72, 187, 120, 0.1); }
+        .persona-message { border-color: #ed64a6; background: rgba(237, 100, 166, 0.1); }
+        .speaker { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; }
+        .avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid #ccc; }
+        .emoji { font-size: 1.2rem; }
+        p { margin: 0; white-space: pre-wrap; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📚 Conversation Archive</h1>
+        <p>${date} の記録</p>
+    </div>
+    ${entries.map(entry => `
+    <div class="entry">
+        <span class="date">📅 ${entry.createdAt}</span>
+        <div class="message user-message">
+            <div class="speaker">
+                ${settings.userImage
+                ? `<img src="${settings.userImage}" class="avatar">`
+                : `<span class="emoji">${settings.userIcon}</span>`}
+                ${settings.userName}
+            </div>
+            <p>${applyCensor(entry.userMessage)}</p>
+        </div>
+        <div class="message persona-message">
+            <div class="speaker">
+                ${settings.personaImage
+                ? `<img src="${settings.personaImage}" class="avatar">`
+                : `<span class="emoji">${settings.personaIcon}</span>`}
+                ${settings.personaName}
+            </div>
+            <p>${applyCensor(entry.personaMessage)}</p>
+        </div>
+    </div>
+    `).join('')}
+</body>
+</html>`;
+
+        const blob = new Blob([htmlContent], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <div className="conversation-archive">
             <header className="archive-header">
                 <h2>📚 Conversation Archive</h2>
                 <p>セッションの断片を記録する書庫</p>
+                {entries.length > 0 && (
+                    <button className="export-btn" onClick={exportToHtml}>
+                        💾 魔導書として保存 (HTML)
+                    </button>
+                )}
             </header>
 
             {/* Settings Toggle */}
@@ -425,6 +531,12 @@ const ConversationArchive = () => {
 
                                 <div className="entry-actions">
                                     <button
+                                        className="fullscreen-btn"
+                                        onClick={() => openModal(entry)}
+                                    >
+                                        📖 全画面
+                                    </button>
+                                    <button
                                         className={`copy-btn ${copiedId === entry.id ? 'copied' : ''}`}
                                         onClick={() => copyEntry(entry)}
                                     >
@@ -448,6 +560,45 @@ const ConversationArchive = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Fullscreen Modal - Using Portal */}
+            {modalEntry && ReactDOM.createPortal(
+                <div className="archive-modal-overlay" onClick={closeModal}>
+                    <div className="archive-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="archive-modal-header">
+                            <h3>Conversation Log</h3>
+                            <button className="archive-modal-close" onClick={closeModal}>
+                                ✕ 閉じる
+                            </button>
+                        </div>
+                        <div className="archive-modal-content">
+                            <div className="modal-message user-message">
+                                <div className="message-header">
+                                    {renderAvatar('user', 'normal')}
+                                    <span className="speaker">{settings.userName}:</span>
+                                </div>
+                                <p>{applyCensor(modalEntry.userMessage)}</p>
+                            </div>
+                            <div className="modal-message persona-message">
+                                <div className="message-header">
+                                    {renderAvatar('persona', 'normal')}
+                                    <span className="speaker">{settings.personaName}:</span>
+                                </div>
+                                <p>{applyCensor(modalEntry.personaMessage)}</p>
+                            </div>
+                        </div>
+                        <div className="archive-modal-actions">
+                            <button
+                                className={`copy-btn ${copiedId === modalEntry.id ? 'copied' : ''}`}
+                                onClick={() => copyEntry(modalEntry)}
+                            >
+                                {copiedId === modalEntry.id ? '✓ コピー完了!' : '📋 コピー'}
+                            </button>
+                        </div>
+                    </div>
+                </div>,
+                document.body
+            )}
         </div>
     );
 };

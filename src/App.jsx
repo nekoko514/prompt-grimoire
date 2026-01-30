@@ -16,9 +16,12 @@ import ContractRoom from './components/ContractRoom';
 import PromptVault from './components/PromptVault';
 import GalleryRoom from './components/GalleryRoom';
 import TerrariumRoom from './components/TerrariumRoom';
+import DarkRoom from './components/DarkRoom';
 import ConversationArchive from './components/ConversationArchive';
 import RadioTicker from './components/RadioTicker';
 import MoodLight from './components/MoodLight';
+import RadioTransmitter from './components/RadioTransmitter';
+import SystemRoom from './components/SystemRoom';
 
 import promptData from './data/prompts.json';
 
@@ -38,6 +41,12 @@ function App() {
       <div className="crt-scanline"></div>
 
       {/* ROOMS */}
+      {currentRoom === 'transmitter' && (
+        <div className="room-container">
+          <RadioTransmitter />
+        </div>
+      )}
+
       {currentRoom === 'studio' && (
         <PromptStudio
           timeOfDay={timeOfDay}
@@ -93,6 +102,14 @@ function App() {
 
       {currentRoom === 'terrarium' && (
         <TerrariumRoom />
+      )}
+
+      {currentRoom === 'darkroom' && (
+        <DarkRoom />
+      )}
+
+      {currentRoom === 'system' && (
+        <SystemRoom onClose={() => setCurrentRoom('studio')} />
       )}
 
       <Navigation currentRoom={currentRoom} setRoom={setCurrentRoom} />
