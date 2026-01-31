@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rinadehi.github.io/Prompt_Grimoire/",
+  "homepage": "https://nekoko514.github.io/prompt-grimoire/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

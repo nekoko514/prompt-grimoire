@@ -1,49 +1,46 @@
 # SESSION LOG - 2026-01-30 (Final)
-**Focus**: Radio Transmitter Complete Enhancement + Bug Fixes
+**Focus**: Radio Transmitter Complete Enhancement & Deployment
 
 ## Summary
-Successfully implemented all requested features for Alastor chat, including a critical fix for IndexedDB initialization issues.
+Successfully implemented all requested features for Alastor chat, fixed critical bugs, added customization options, and deployed to GitHub Pages.
 
 ## Completed Features ✅
 
-### Session Management
-- Create/switch/delete/archive sessions
-- Session list in dropdown menu
+### 1. Core Chat Features
+- **Session Management**: 📂 Create, switch, delete, and archive chat sessions.
+- **Message Interaction**: ✏️ Edit user messages (auto-regeneration) and 🔄 Regenerate AI responses.
+- **Brain Vault (Memory/Knowledge)**: 🧠 Manage persistent memory and scenario knowledge blocks.
 
-### Message Editing & Regeneration  
-- Edit user messages with ✏️ button
-- Regenerate AI responses with 🔄 button
+### 2. Customization & Settings ⚙️
+- **Theme Customization**:
+  - Text color picker
+  - Background image (URL or Local File upload)
+  - Background opacity slider
+  - Default reset button
+- **User API Key Input**:
+  - Secure input for Gemini API Key
+  - Stored in `sessionStorage` (cleared on browser close)
+  - Prevents API key leakage on public deployments
 
-### Memory & Knowledge (Brain Vault)
-- 🧠 button opens management panel
-- Memory: Key-value pairs for persistent facts
-- Knowledge: Toggleable scenario/setting blocks
+### 3. Critical Bug Fixes 🐛
+- **IndexedDB Hang**: Implemented 5-second timeout + in-memory fallback for database initialization issues.
+- **Response Truncation**: Increased `maxOutputTokens` to 4096.
 
-## Critical Bug Fix
-
-### Issue
-IndexedDB initialization was hanging indefinitely, causing the app to freeze.
-
-### Solution
-Implemented **5-second timeout + in-memory fallback**:
-- If IndexedDB fails to initialize within 5 seconds, automatically switches to in-memory storage
-- All features work normally (data persists until browser is closed)
-- Console shows: `[MemoryCore] Using in-memory storage`
-
-### Root Cause
-Unknown issue with IndexedDB `openDB` never resolving. Possible browser/environment specific issue.
+## Deployment 🚀
+- **Repository**: https://github.com/nekoko514/prompt-grimoire
+- **Live Site**: https://nekoko514.github.io/prompt-grimoire/
+- **Security**: `.env` added to `.gitignore`. Users must input their own API keys.
 
 ## Technical Changes
 
 | File | Changes |
 |------|---------|
-| `MemoryCore.js` | Added timeout, in-memory fallback, updated all methods for dual-mode support |
-| `RadioFrequency.js` | Increased maxOutputTokens to 4096 |
-| `RadioTransmitter.jsx` | Added error handling, removed debug logs |
+| `MemoryCore.js` | Added timeout, in-memory fallback, full CRUD for sessions/messages |
+| `RadioFrequency.js` | Increased tokens, added `setApiKey` method |
+| `RadioTransmitter.jsx` | Added Settings Panel, File Upload, Theme Logic, Error Handling |
 | `BrainVault.jsx` | New component for memory/knowledge management |
+| `.gitignore` | Added `.env` for security |
 
-## Usage
-1. http://localhost:5173/ → Radio Transmitter
-2. 🧠 for Brain Vault (memory/knowledge)
-3. ✨ for new session
-4. 📂 for session list
+## Next Steps
+- Verify live site functionality
+- Enjoy the Alastor Chat!
